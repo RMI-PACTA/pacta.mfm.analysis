@@ -438,7 +438,8 @@ calculate_aggregate_portfolio_score <- function(data,
 prep_scores_NZE <- function(results_portfolio,
                         overview = overview,
                         scenario = "NZE_2050",
-                        remaining_carbon_budgets_nze) {
+                        remaining_carbon_budgets_nze,
+                        scenario_thresholds) {
 
   # infer start_year
   start_year <- min(results_portfolio$year, na.rm = TRUE)
