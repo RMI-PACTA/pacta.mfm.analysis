@@ -7,7 +7,8 @@
 prep_scores(
   results_portfolio,
   overview = overview,
-  scenario_source = "GECO2021"
+  scenario_source = "GECO2021",
+  remaining_carbon_budgets
 )
 }
 \arguments{
@@ -18,6 +19,9 @@ level PACTA results from a PACTA for investors analysis.}
 
 \item{scenario_source}{Character. Must be a
 \code{scenario_source} featured in the \code{scenario_thresholds} data set.}
+
+\item{remaining_carbon_budgets}{Data-frame that contains the remaining carbon
+budget per sector and scenario source.}
 }
 \value{
 data.frame
