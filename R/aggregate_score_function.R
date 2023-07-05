@@ -17,13 +17,11 @@
 prep_scores <- function(results_portfolio,
                         overview = overview,
                         scenario_source = "GECO2021",
-                        remaining_carbon_budgets) {
+                        remaining_carbon_budgets,
+                        scenario_thresholds) {
 
   # infer start_year
   start_year <- min(results_portfolio$year, na.rm = TRUE)
-
-  # get scenarios
-  scenario_thresholds <- base::get("scenario_thresholds")
 
   scenarios <- scenario_thresholds %>%
     dplyr::filter(.data$scenario_source == .env$scenario_source) %>%
