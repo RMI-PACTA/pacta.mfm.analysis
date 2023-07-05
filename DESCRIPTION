@@ -1,19 +1,24 @@
-Package: pacta.r.package
-Title: What the Package Does (One Line, Title Case)
+Package: pacta.mfm.analysis
+Title: Utility Functions to Run MFM Analyses Based on P4I
 Version: 0.0.0.9000
 Authors@R: 
-    c(person(given = "First", 
-             family = "Last", 
+    c(person(given = "Jacob",
+             family = "Kastl",
              role = c("aut", "cre"),
-             email = "first.last@example.com", 
-             comment = c(ORCID = "YOUR-ORCID-ID")),
-      person(given = "Rocky Mountain Institute", 
+             email = "jacob.kastl@gmail.com"),
+      person(given = "Rocky Mountain Institute",
              role = c("cph", "fnd"),
-             email = "PACTA4investors@rmi.org"))
+             email = "PACTA4banks@rmi.org"))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
-Suggests: 
-    covr
+Depends: 
+    R (>= 2.10)
+LazyData: true
+Imports: 
+    dplyr,
+    magrittr,
+    rlang,
+    tidyr
