@@ -51,7 +51,8 @@ on PACTA for investors output files. These files must have been wrangled with
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">prep_scores</span><span class="op">(</span></span>
 <span>  <span class="va">results_portfolio</span>,</span>
 <span>  overview <span class="op">=</span> <span class="va">overview</span>,</span>
-<span>  scenario_source <span class="op">=</span> <span class="st">"GECO2021"</span></span>
+<span>  scenario_source <span class="op">=</span> <span class="st">"GECO2021"</span>,</span>
+<span>  <span class="va">remaining_carbon_budgets</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -69,6 +70,11 @@ level PACTA results from a PACTA for investors analysis.</p></dd>
 <dt>scenario_source</dt>
 <dd><p>Character. Must be a
 <code>scenario_source</code> featured in the <code>scenario_thresholds</code> data set.</p></dd>
+
+
+<dt>remaining_carbon_budgets</dt>
+<dd><p>Data-frame that contains the remaining carbon
+budget per sector and scenario source.</p></dd>
 
 </dl></div>
     <div id="value">
