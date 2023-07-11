@@ -9,18 +9,19 @@
 #' @param overview Data frame that contains overview
 #' @param scenario_source Character. Must be a
 #'   `scenario_source` featured in the `scenario_thresholds` data set.
+#' @param remaining_carbon_budgets Data-frame that contains the remaining carbon
+#' budget per sector and scenario source.
 #'
 #' @return data.frame
 #' @export
 prep_scores <- function(results_portfolio,
                         overview = overview,
-                        scenario_source = "GECO2021") {
+                        scenario_source = "GECO2021",
+                        remaining_carbon_budgets,
+                        scenario_thresholds) {
 
   # infer start_year
   start_year <- min(results_portfolio$year, na.rm = TRUE)
-
-  # get scenarios
-  scenario_thresholds <- base::get("scenario_thresholds")
 
   scenarios <- scenario_thresholds %>%
     dplyr::filter(.data$scenario_source == .env$scenario_source) %>%
@@ -59,9 +60,6 @@ prep_scores <- function(results_portfolio,
   # combine scores of roadmap and emission intensity sectors
   sector_aggregate_scores <- sector_aggregate_scores_tech %>%
     dplyr::bind_rows(sector_aggregate_scores_emissions)
-
-  # # get remaining carbon budgets and calculate portfolio aggregate score
-  remaining_carbon_budgets <- base::get("remaining_carbon_budgets")
 
   portfolio_aggregate_scores <- sector_aggregate_scores %>%
     calculate_portfolio_aggregate_scores(
@@ -439,7 +437,9 @@ calculate_aggregate_portfolio_score <- function(data,
 #' @export
 prep_scores_NZE <- function(results_portfolio,
                         overview = overview,
-                        scenario = "NZE_2050") {
+                        scenario = "NZE_2050",
+                        remaining_carbon_budgets_nze,
+                        scenario_thresholds) {
 
   # infer start_year
   start_year <- min(results_portfolio$year, na.rm = TRUE)
@@ -478,12 +478,9 @@ prep_scores_NZE <- function(results_portfolio,
   sector_aggregate_scores <- sector_aggregate_scores_tech %>%
     dplyr::bind_rows(sector_aggregate_scores_emissions)
 
-  # # get remaining carbon budgets and calculate portfolio aggregate score
-  remaining_carbon_budgets <- base::get("remaining_carbon_budgets_nze")
-
   portfolio_aggregate_scores <- sector_aggregate_scores %>%
     calculate_portfolio_aggregate_scores(
-      remaining_carbon_budgets = remaining_carbon_budgets
+      remaining_carbon_budgets = remaining_carbon_budgets_nze
     )
 
   aggregate_portfolio_score <- portfolio_aggregate_scores %>%
